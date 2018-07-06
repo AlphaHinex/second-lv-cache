@@ -24,7 +24,7 @@ class SecondLvCacheApplicationTests {
     void checkQueryCache() {
         Session session = (Session) entityManager.getDelegate()
         Statistics statistics = session.getSessionFactory().getStatistics()
-        statistics.clear()
+        statistics.setStatisticsEnabled(true)
 
         repo.save(new AnEntity('abc', '123'))
         AnEntity entity = repo.findByUsername('abc')
@@ -48,6 +48,8 @@ class SecondLvCacheApplicationTests {
 
         // hit count will be reset after update
         showCounts(statistics)
+
+        statistics.setStatisticsEnabled(false)
     }
 
     def showCounts(Statistics statistics) {
