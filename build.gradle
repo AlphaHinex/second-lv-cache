@@ -37,6 +37,8 @@ dependencies {
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
-	testCompile 'org.hibernate:hibernate-ehcache:5.2.17.Final'
+//	testCompile 'org.hibernate:hibernate-ehcache:5.2.17.Final'
+//	testCompile 'net.sf.ehcache:ehcache:2.10.3'
+	testCompile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
 //	testCompile 'org.springframework.data:spring-data-jpa:2.0.8.RELEASE'
 }
