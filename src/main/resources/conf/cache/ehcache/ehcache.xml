@@ -1,0 +1,55 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         name="pepCacheManager"
+         updateCheck="false">
+
+    <!-- View java.io.File.createTempFile(java.lang.String, java.lang.String, java.io.File)
+    to see where 'java.io.tmpdir' is -->
+    <diskStore path="java.io.tmpdir/pep-ehcache"/>
+
+    <!-- The "defaultCache" does not provide "defaults" for every cache, but its just a way
+    of specifying config for caches that can/are added dynamically - using
+    cacheManager.addCache(String cacheName). -->
+    <defaultCache maxElementsInMemory="10000"
+                  timeToIdleSeconds="120"
+                  timeToLiveSeconds="120"
+                  maxElementsOnDisk="10000000"
+                  diskExpiryThreadIntervalSeconds="120"
+                  memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+    <cache name="org.hibernate.cache.internal.StandardQueryCache"
+           maxEntriesLocalHeap="500"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+           maxEntriesLocalHeap="5000"
+           eternal="true">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <!-- Default cache for spring cache annotation using -->
+    <cache name="pep"
+           maxElementsInMemory="10000"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120"
+           maxElementsOnDisk="10000000"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <!-- This cache is used by JWT secret,
+    elements in this cache have two weeks time to live -->
+    <cache name="apiSecrets"
+           maxEntriesLocalHeap="5000"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+</ehcache>

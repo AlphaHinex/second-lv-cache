@@ -5,6 +5,7 @@ buildscript {
 }
 
 apply plugin: 'groovy'
+apply plugin: 'java'
 apply plugin: 'idea'
 
 group = 'com.proper.oopstorm'
@@ -25,9 +26,12 @@ dependencies {
 	compile('org.codehaus.groovy:groovy')
 	runtime('com.h2database:h2')
 
-//	testCompile 'org.hibernate:hibernate-ehcache:5.2.17.Final'
-//	testCompile 'net.sf.ehcache:ehcache:2.10.3'
-	compile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
+	compile 'org.springframework:spring-context-support:5.0.7.RELEASE'
+	compile 'org.hibernate:hibernate-ehcache:5.2.17.Final'
+	compile 'net.sf.ehcache:ehcache:2.10.5'
+    compile 'org.reflections:reflections:0.9.11'
+//	compile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
+	compile 'com.proper.enterprise.platform:pep-cache-api:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-configs:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-core:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-core-jpa:0.5.0-SNAPSHOT'
