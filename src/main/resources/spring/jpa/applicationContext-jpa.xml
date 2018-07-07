@@ -59,7 +59,6 @@
 
     <!-- Spring Data JPA -->
     <jpa:repositories base-package="com.proper.**.repository"
-                      factory-class="com.proper.enterprise.platform.core.jpa.repository.BaseJpaRepositoryBean"
                       transaction-manager-ref="jpaTransactionManager" entity-manager-factory-ref="entityManagerFactory"/>
 
 </beans>
