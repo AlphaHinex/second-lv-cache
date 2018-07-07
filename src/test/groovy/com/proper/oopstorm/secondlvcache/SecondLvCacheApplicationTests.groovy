@@ -9,7 +9,6 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.jdbc.SqlConfig
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.transaction.annotation.Transactional
 
@@ -19,7 +18,6 @@ import javax.persistence.EntityManager
 @ContextConfiguration("/spring/applicationContext.xml")
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
-@SqlConfig(encoding = "UTF-8")
 class SecondLvCacheApplicationTests {
 
     @Autowired

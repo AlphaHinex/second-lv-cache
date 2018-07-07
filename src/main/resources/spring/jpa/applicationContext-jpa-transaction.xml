@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-lazy-init="true">
+
+    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="jpaTransactionManager">
+        <tx:attributes>
+            <tx:method name="save*" rollback-for="RuntimeException"/>
+            <tx:method name="delete*" rollback-for="RuntimeException"/>
+            <tx:method name="update*" rollback-for="RuntimeException"/>
+            <tx:method name="add*" rollback-for="RuntimeException"/>
+            <tx:method name="create*" rollback-for="RuntimeException"/>
+            <!-- other methods are read-only -->
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="txEntryPoint" expression="execution(* com.proper..service.impl.*ServiceImpl.*(..)) or execution(* com.proper..service.impl.*ServiceSupport.*(..))"/>
+        <aop:advisor pointcut-ref="txEntryPoint" advice-ref="txAdvice"/>
+    </aop:config>
+    <bean id="beforeService" class="com.proper.enterprise.platform.core.interceptor.ServiceConvertInterceptor"></bean>
+    <aop:config>
+        <aop:pointcut id="servicePointcutTarget"
+                      expression="execution(* com.proper..service.impl.*ServiceImpl.*(..)) or execution(* com.proper..service.impl.*ServiceSupport.*(..))"/>
+        <aop:aspect id="beforeServiceAspect" ref="beforeService">
+            <aop:around
+                pointcut-ref="servicePointcutTarget"
+                method="serviceBeforeInterceptor"
+            />
+        </aop:aspect>
+    </aop:config>
+</beans>
