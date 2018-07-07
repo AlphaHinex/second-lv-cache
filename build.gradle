@@ -33,7 +33,7 @@ dependencies {
 //	compile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
 //	compile 'com.proper.enterprise.platform:pep-cache-api:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-configs:0.5.0-SNAPSHOT'
-	compile 'com.proper.enterprise.platform:pep-core:0.5.0-SNAPSHOT'
+//	compile 'com.proper.enterprise.platform:pep-core:0.5.0-SNAPSHOT'
 //	compile 'com.proper.enterprise.platform:pep-core-jpa:0.5.0-SNAPSHOT'
 	testCompile 'com.proper.enterprise.platform:pep-test:0.5.0-SNAPSHOT'
 //	testCompile 'org.springframework.data:spring-data-jpa:2.0.8.RELEASE'
