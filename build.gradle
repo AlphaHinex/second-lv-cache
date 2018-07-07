@@ -31,7 +31,7 @@ dependencies {
 	compile 'net.sf.ehcache:ehcache:2.10.5'
     compile 'org.reflections:reflections:0.9.11'
 //	compile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
-	compile 'com.proper.enterprise.platform:pep-cache-api:0.5.0-SNAPSHOT'
+//	compile 'com.proper.enterprise.platform:pep-cache-api:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-configs:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-core:0.5.0-SNAPSHOT'
 	compile 'com.proper.enterprise.platform:pep-core-jpa:0.5.0-SNAPSHOT'
