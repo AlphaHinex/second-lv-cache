@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/task
+                           http://www.springframework.org/schema/task/spring-task.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd" default-lazy-init="true">
+
+    <!-- Auto scan beans -->
+    <context:component-scan base-package="com.proper"/>
+
+    <!--init configs-->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:conf/pep/pep.properties" local-override="true"/>
+    <context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true"
+                                  location="classpath:conf/config.properties" local-override="true"/>
+
+    <!--init jackson mapper-->
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"/>
+
+    <import resource="classpath*:spring/**/applicationContext-*.xml"/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg>
+                    <value>UTF-8</value>
+                </constructor-arg>
+                <property name="writeAcceptCharset" value="false"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <task:annotation-driven scheduler="pepScheduler" executor="pepExecutor" />
+    <task:scheduler id="pepScheduler" pool-size="${pep.scheduler.poolSize}" />
+    <task:executor id="pepExecutor" pool-size="${pep.executor.poolSize}" queue-capacity="${pep.executor.queueCapacity}" />
+</beans>
