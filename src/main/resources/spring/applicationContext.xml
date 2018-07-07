@@ -37,7 +37,4 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <task:annotation-driven scheduler="pepScheduler" executor="pepExecutor" />
-    <task:scheduler id="pepScheduler" pool-size="${pep.scheduler.poolSize}" />
-    <task:executor id="pepExecutor" pool-size="${pep.executor.poolSize}" queue-capacity="${pep.executor.queueCapacity}" />
 </beans>
