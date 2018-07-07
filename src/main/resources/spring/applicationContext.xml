@@ -17,7 +17,6 @@
     <context:component-scan base-package="com.proper"/>
 
     <!--init configs-->
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:conf/pep/pep.properties" local-override="true"/>
     <context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true"
                                   location="classpath:conf/config.properties" local-override="true"/>
 

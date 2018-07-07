@@ -27,16 +27,20 @@ dependencies {
 	runtime('com.h2database:h2:1.3.176')
 
 	compile 'org.springframework:spring-context-support:5.0.7.RELEASE'
+	compile 'org.springframework:spring-webmvc:5.0.7.RELEASE'
     compile 'org.springframework.data:spring-data-jpa:2.0.8.RELEASE'
 	compile 'org.hibernate:hibernate-ehcache:5.2.17.Final'
 	compile 'net.sf.ehcache:ehcache:2.10.5'
     compile 'org.reflections:reflections:0.9.11'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
     compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile "com.alibaba:druid:1.1.9"
+    compile "ch.qos.logback:logback-classic:1.2.3"
+    compile "ch.qos.logback:logback-core:1.2.3"
 
 //	compile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
 //	compile 'com.proper.enterprise.platform:pep-cache-api:0.5.0-SNAPSHOT'
-	compile 'com.proper.enterprise.platform:pep-configs:0.5.0-SNAPSHOT'
+//	compile 'com.proper.enterprise.platform:pep-configs:0.5.0-SNAPSHOT'
 //	compile 'com.proper.enterprise.platform:pep-core:0.5.0-SNAPSHOT'
 //	compile 'com.proper.enterprise.platform:pep-core-jpa:0.5.0-SNAPSHOT'
 //	testCompile 'com.proper.enterprise.platform:pep-test:0.5.0-SNAPSHOT'
