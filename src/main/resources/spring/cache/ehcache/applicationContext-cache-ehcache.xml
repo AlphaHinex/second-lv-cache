@@ -13,9 +13,8 @@
     </bean>
 
     <bean id="ehcacheCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="cacheManagerName" value="pepCacheManager" />
+        <!--<property name="cacheManagerName" value="pepCacheManager" />-->
         <property name="acceptExisting" value="true" />
-        <property name="configLocation" value="classpath:conf/cache/ehcache/ehcache.xml" />
     </bean>
 
     <cache:annotation-driven />
