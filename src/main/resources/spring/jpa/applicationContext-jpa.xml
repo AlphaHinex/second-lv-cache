@@ -23,6 +23,27 @@
         </property>
     </bean>
 
+    <bean id="dataSource" class="com.proper.enterprise.platform.core.jpa.datasource.PEPDatasource" init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${database.maxPoolSize}"/>
+        <property name="minIdle" value="${database.maxPoolSize}"/>
+        <property name="maxActive" value="${database.maxPoolSize}"/>
+        <property name="defaultAutoCommit" value="${database.autoCommit}"/>
+        <property name="databaseType" value="${database.type}"/>
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="stat"/>
+    </bean>
+
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="com.proper.**.entity" />
@@ -30,6 +51,10 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
         <property name="jpaProperties" ref="jpaProps" />
+    </bean>
+
+    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
     <!-- Spring Data JPA -->
