@@ -26,11 +26,6 @@
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
         <property name="password" value="${database.password}"/>
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="${database.maxPoolSize}"/>
-        <property name="minIdle" value="${database.maxPoolSize}"/>
-        <property name="maxActive" value="${database.maxPoolSize}"/>
-        <property name="defaultAutoCommit" value="${database.autoCommit}"/>
         <property name="driverClassName" value="org.h2.Driver"/>
         <!-- 配置获取连接等待超时的时间 -->
         <property name="maxWait" value="60000"/>
