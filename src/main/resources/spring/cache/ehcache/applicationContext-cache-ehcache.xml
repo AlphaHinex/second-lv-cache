@@ -13,7 +13,6 @@
     </bean>
 
     <bean id="ehcacheCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <!--<property name="cacheManagerName" value="pepCacheManager" />-->
         <property name="acceptExisting" value="true" />
     </bean>
 
