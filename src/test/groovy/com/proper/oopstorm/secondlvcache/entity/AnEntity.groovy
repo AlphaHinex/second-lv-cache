@@ -1,5 +1,6 @@
 package com.proper.oopstorm.secondlvcache.entity
 
+import org.hibernate.annotations.CacheConcurrencyStrategy
 import org.hibernate.annotations.GenericGenerator
 
 import javax.persistence.*
@@ -7,6 +8,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "pep_test_an")
 @Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 class AnEntity {
 
     AnEntity() { }
