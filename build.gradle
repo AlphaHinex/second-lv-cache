@@ -13,13 +13,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	maven {
-		url "${nexusUrl}/repository/maven-public"
-		credentials(PasswordCredentials) {
-			username = nexusUsername
-			password = nexusPassword
-		}
-	}
+    mavenCentral()
 }
 
 dependencies {
@@ -37,13 +31,6 @@ dependencies {
     compile "com.alibaba:druid:1.1.9"
     compile "ch.qos.logback:logback-classic:1.2.3"
     compile "ch.qos.logback:logback-core:1.2.3"
-
-//	compile 'com.proper.enterprise.platform:pep-cache-ehcache:0.5.0-SNAPSHOT'
-//	compile 'com.proper.enterprise.platform:pep-cache-api:0.5.0-SNAPSHOT'
-//	compile 'com.proper.enterprise.platform:pep-configs:0.5.0-SNAPSHOT'
-//	compile 'com.proper.enterprise.platform:pep-core:0.5.0-SNAPSHOT'
-//	compile 'com.proper.enterprise.platform:pep-core-jpa:0.5.0-SNAPSHOT'
-//	testCompile 'com.proper.enterprise.platform:pep-test:0.5.0-SNAPSHOT'
 
 	testCompile 'org.springframework:spring-test:5.0.7.RELEASE'
 	testCompile 'junit:junit:4.12'

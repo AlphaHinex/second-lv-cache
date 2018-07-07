@@ -12,7 +12,7 @@
         <property name="locations" value="classpath*:conf/**/jpa-cache.properties" />
         <property name="properties">
             <value>
-                hibernate.dialect                  = #{dataSource.dialect}
+                hibernate.dialect                  = org.hibernate.dialect.H2Dialect
                 hibernate.format_sql               = ${hibernate.format_sql}
                 hibernate.generate_statistics      = ${hibernate.generate_statistics}
                 hibernate.hbm2ddl.auto             = ${hibernate.hbm2ddl.auto}
@@ -23,7 +23,7 @@
         </property>
     </bean>
 
-    <bean id="dataSource" class="com.proper.enterprise.platform.core.jpa.datasource.PEPDatasource" init-method="init" destroy-method="close">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
@@ -33,7 +33,7 @@
         <property name="minIdle" value="${database.maxPoolSize}"/>
         <property name="maxActive" value="${database.maxPoolSize}"/>
         <property name="defaultAutoCommit" value="${database.autoCommit}"/>
-        <property name="databaseType" value="${database.type}"/>
+        <property name="driverClassName" value="org.h2.Driver"/>
         <!-- 配置获取连接等待超时的时间 -->
         <property name="maxWait" value="60000"/>
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
