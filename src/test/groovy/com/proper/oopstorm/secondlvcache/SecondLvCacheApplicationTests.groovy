@@ -1,6 +1,5 @@
 package com.proper.oopstorm.secondlvcache
 
-import com.proper.enterprise.platform.test.AbstractTest
 import com.proper.oopstorm.secondlvcache.entity.AnEntity
 import com.proper.oopstorm.secondlvcache.repository.AnRepository
 import org.hibernate.Session
@@ -12,14 +11,12 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.jdbc.SqlConfig
 import org.springframework.test.context.junit4.SpringRunner
-import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.transaction.annotation.Transactional
 
 import javax.persistence.EntityManager
 
 @Transactional(transactionManager = "jpaTransactionManager")
 @ContextConfiguration("/spring/applicationContext.xml")
-@WebAppConfiguration
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SqlConfig(encoding = "UTF-8")
