@@ -1,9 +1,8 @@
-package com.proper.oopstorm.secondlvcache;
+package com.proper.oopstorm.secondlvcache.repository;
 
-import org.springframework.data.jpa.repository.QueryHints;
+import com.proper.enterprise.platform.core.jpa.annotation.CacheQuery;
+import com.proper.oopstorm.secondlvcache.entity.AnEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;
-
-import javax.persistence.QueryHint;
 
 public interface AnRepository extends PagingAndSortingRepository<AnEntity, String> {
 
@@ -12,7 +11,7 @@ public interface AnRepository extends PagingAndSortingRepository<AnEntity, Strin
      * @param username username
      * @return AnEntity
      */
-    @QueryHints({ @QueryHint(name = "org.hibernate.cacheable", value = "true") })
+    @CacheQuery
     AnEntity findByUsername(String username);
 
 }

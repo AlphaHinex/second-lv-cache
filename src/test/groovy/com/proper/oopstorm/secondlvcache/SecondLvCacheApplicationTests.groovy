@@ -1,17 +1,21 @@
 package com.proper.oopstorm.secondlvcache
 
+import com.proper.oopstorm.secondlvcache.entity.AnEntity
+import com.proper.oopstorm.secondlvcache.repository.AnRepository
 import org.hibernate.Session
 import org.hibernate.stat.Statistics
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
 
 import javax.persistence.EntityManager
 
 @RunWith(SpringRunner)
 @SpringBootTest
+@ActiveProfiles("test")
 class SecondLvCacheApplicationTests {
 
     @Autowired
