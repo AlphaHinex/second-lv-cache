@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 
 import javax.persistence.EntityManager
 
-@Transactional(transactionManager = "jpaTransactionManager")
+@Transactional(transactionManager = "jpaTransactionManager", propagation = Propagation.NOT_SUPPORTED)
 @ContextConfiguration("/spring/applicationContext.xml")
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
